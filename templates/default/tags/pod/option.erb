@@ -1,0 +1,13 @@
+<% if object.has_tag?(:option) %>
+<% object.parameters.each do |param, default| %>
+<% tags = object.tags(:option).select {|x| x.name.to_s == param.to_s } %>
+<% next if tags.empty? %>
+Valid Options for C<<%= param %>>:
+
+=over
+<% tags.each do |tag| %>
+<%= wrap(option_text(tag), 68) %>
+<% end %>
+=back
+<% end %>
+<% end %>

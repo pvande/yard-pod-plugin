@@ -1,0 +1,6 @@
+=head1 NAME
+
+<%= object %><%=
+  " - #{object.docstring.summary.sub(/\.$/, '')}" unless object.docstring.summary.empty?
+%>
+

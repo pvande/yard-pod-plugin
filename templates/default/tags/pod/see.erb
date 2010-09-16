@@ -1,0 +1,10 @@
+See Also:
+
+=over
+<% object.tags(:see).each do |tag| %>
+=item *
+
+<%= podify(tag.name =~ /https?:/ ? tag.name : "{#{tag.name}}") %>
+<% end %>
+=back
+

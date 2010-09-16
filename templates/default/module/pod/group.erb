@@ -1,0 +1,7 @@
+=head2 <%= @group %>
+
+=over
+<% sort_listing(@list).map do |m| %>
+<%= yieldall(:object => m).strip %>
+<% end %>
+=back

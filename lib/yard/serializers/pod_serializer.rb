@@ -1,6 +1,7 @@
 module YARD
   module Serializers
     class PODSerializer < FileSystemSerializer
+      VERSION = '0.1'
       # Creates a new PODSerializer with options
       #
       # @option opts [String] :basepath ('.') the base path to write data to
@@ -29,7 +30,18 @@ module YARD
       #   object, otherwise the path on disk (without the basepath).
       def serialized_path(object)
         return object if object.is_a?(String)
-        return File.join(object.path.split('::')) + ".#{@extension}"
+        return File.join(object.path.split('::')) + (@extension.empty? ? '' : ".#{@extension}")
+      end
+
+      # Implements the path to the source of a code object.
+      #
+      # @param [CodeObjects::Base, String] object the object to get a path for.
+      #   The path of a string is the string itself.
+      # @return [String] if object is a String, returns
+      #   object, otherwise the path on disk (without the basepath).
+      def package_path(object)
+        return object if object.is_a?(String)
+        return File.join(object.path.split('::')) + ".pm"
       end
     end
   end

@@ -1,0 +1,15 @@
+<% if object.tags(:overload).size == 1 %>
+<%= wrap(yieldall(:object => object.tag(:overload))) %>
+<% elsif object.has_tag?(:overload) %>
+Overloads:
+
+<% object.tags(:overload).each do |overload| %><% next if overload.tags.empty? %>
+<%= indent(signature(overload)) %>
+
+=over
+
+<%= wrap(yieldall(:object => overload)) %>
+
+=back
+<% end %>
+<% end %>

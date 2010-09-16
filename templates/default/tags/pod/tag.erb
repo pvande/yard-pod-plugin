@@ -1,0 +1,8 @@
+<%= @label ? @label : YARD::Tags::Library.labels[@name] %>:
+
+=over
+<% object.tags(@name).each do |tag| %>
+<%= wrap(tag_text(tag), 68) %>
+<% end %>
+=back
+
