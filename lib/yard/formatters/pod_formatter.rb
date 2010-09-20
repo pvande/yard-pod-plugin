@@ -49,10 +49,10 @@ module YARD
         @res << "\n"
       end
 
-      # def accept_heading(head)
-      #   @res << '=head' << head.level.to_s << ' '
-      #   @res << head.text << "\n"
-      # end
+      def accept_heading(head)
+        @res << '=head' << (head.level + 1).to_s << ' '
+        @res << head.text << "\n"
+      end
 
       def accept_verbatim(txt)
         @res << txt.text << "\n"
